@@ -1,9 +1,4 @@
-interface WeatherData {
-  imageSrc: string;
-  location: string;
-  temperature: string;
-  date: string;
-}
+import { WeatherData } from "../../types";
 
 interface WeatherDisplayProps {
   weatherData: WeatherData | null;
@@ -12,7 +7,7 @@ interface WeatherDisplayProps {
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
   return (
     <div className="WeatherDisplay">
-      <img src={weatherData?.imageSrc} alt="Weather Icon" />
+      <img src={weatherData?.} alt="Weather Icon" />
       <div>
         <h2>{weatherData?.location}</h2>
         <p>{weatherData?.temperature}</p>
