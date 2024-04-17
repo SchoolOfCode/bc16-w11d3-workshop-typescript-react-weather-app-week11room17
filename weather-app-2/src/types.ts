@@ -16,6 +16,7 @@ export interface WeatherCondition {
 }
 
 export interface CurrentWeather {
+    last_updated_epoch: number;
     last_updated: string;
     temp_c: number;
     temp_f: number;

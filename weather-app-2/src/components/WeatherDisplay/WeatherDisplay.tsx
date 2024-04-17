@@ -7,11 +7,11 @@ interface WeatherDisplayProps {
 const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
   return (
     <div className="WeatherDisplay">
-      <img src="" alt="Weather Icon" />
+      <img src={weatherData?.current.condition.icon} alt="Weather Icon" />
       <div>
-        <h2>Location</h2>
-        <p>Date</p>
-        <p>Temperature</p>
+        <h2>{weatherData?.location.name}</h2>
+        <p>{weatherData?.location.localtime}</p>
+        <p>{weatherData?.current.temp_c} °C</p>
       </div>
     </div>
   );
