@@ -2,6 +2,7 @@ import WeatherDisplay from "./WeatherDisplay/WeatherDisplay";
 import Search from "./Search/Search";
 import { WeatherData } from "../types";
 import { useState } from "react";
+import useSWR from "swr";
 
 const WeatherDashboard = () => {
     const [weatherData, setWeatherData] = useState<WeatherData | null>({
@@ -45,13 +46,21 @@ const WeatherDashboard = () => {
         "gust_kph": 23
         }
         });
-
+    const fetcher = (...args) => fetch(...args).then((res) => res.json());
+    // useSWR would run automatically, what brought error 404, so we need to call useSWR unconditionally
+        const { data, error, isLoading } = useSWR(
+            location
+            ? `https://api.weatherapi.com/v1/current.json?key=45a4ec23736a4bca9dc83500232903&q=${location}`
+            : null,
+            fetcher
+        );
     const handleSearch = async (location: string) => {
         // Get value from search component
         // Perform api call
         console.log(location)
+        
 
-        setWeatherData(null);
+        setWeatherData(data);
     }
 
     return (
