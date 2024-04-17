@@ -21,13 +21,10 @@ const WeatherDashboard = () => {
     setLocationQuery(newLocation);
   };
 
-  if (error) return <div>Failed to load weather data</div>;
-  if (!data && !error) return <div>Loading...</div>;
-
   return (
     <div className="weather-dashboard">
       <Search onSearch={handleSearch} />
-      <WeatherDisplay weatherData={data || null} />
+      <WeatherDisplay weatherData={data || null} error={error || null} />
     </div>
   );
 };

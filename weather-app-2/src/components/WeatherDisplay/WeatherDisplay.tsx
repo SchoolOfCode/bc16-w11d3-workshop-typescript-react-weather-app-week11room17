@@ -2,9 +2,12 @@ import { WeatherData } from "../../types";
 
 interface WeatherDisplayProps {
   weatherData: WeatherData | null;
+  error: Error | null;
 }
 
-const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
+const WeatherDisplay: React.FC<WeatherDisplayProps> = ({  weatherData,  error,}) => {
+  if (error) return <div>Failed to load weather data</div>;
+  if (!weatherData && !error) return <div>Loading...</div>;
   return (
     <div className="WeatherDisplay">
       <img src={weatherData?.current.condition.icon} alt="Weather Icon" />
@@ -15,6 +18,6 @@ const WeatherDisplay: React.FC<WeatherDisplayProps> = ({ weatherData }) => {
       </div>
     </div>
   );
-}
+};
 
 export default WeatherDisplay;
