@@ -12,7 +12,7 @@ const WeatherDashboard = () => {
 
   // useSWR would run automatically, what brought error 404, so we need to call useSWR unconditionally
   const { data, error } = useSWR<WeatherData, Error>(
-    `https://api.weatherapi.com/v1/current.json?key=45a4ec23736a4bca9dc83500232903&q=${locationQuery}`,
+    `https://api.weatherapi.com/v1/forecast.json?key=45a4ec23736a4bca9dc83500232903&q=${locationQuery}&days=3`,
     fetcher
   );
   const handleSearch = (newLocation: string) => {
